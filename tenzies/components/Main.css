@@ -1,0 +1,44 @@
+.main {
+  margin-top: 6em;
+}
+
+.canvas {
+  position: relative;
+  background-color: var(--clr-bg--mute);
+  padding: 4em;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+
+  .btn-cta {
+    align-self: center;
+  }
+}
+
+.instructions {
+  color: var(--clr-txt);
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.score {
+  position: absolute;
+  top: 180px;
+  bottom: 150px;
+  left: 0;
+  right: 0;
+
+  background-color: var(--clr-bg--mute);
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.4;
+  padding-top: 2em;
+}
+
+.time,
+.roll {
+  color: limegreen;
+  font-weight: 800;
+}
