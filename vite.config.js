@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react()],
-  base: "/app/",
+  base: "/apps/",
   build: {
     rollupOptions: {
       input: {
