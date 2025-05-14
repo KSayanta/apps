@@ -15,6 +15,10 @@ export default function Main() {
         <li>
           <a href="../../apps/tenzies/">Tenzies</a>
         </li>
+
+        <li>
+          <a href="../../apps/assembly-endgame/">Assembly Endgame</a>
+        </li>
       </ul>
     </main>
   );

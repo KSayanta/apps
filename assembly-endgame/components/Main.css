@@ -1,0 +1,77 @@
+.main {
+  --wrapper-direction: column;
+  --wrapper-gap: 2.6em;
+  margin-top: 4em;
+  text-align: center;
+}
+
+.instructions {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.feedback {
+  background-color: darkgreen;
+  color: whitesmoke;
+  font-size: 1.8rem;
+  font-weight: 800;
+  padding: 0.8em;
+  border-radius: 4px;
+  align-self: stretch;
+}
+
+.canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.chipset-wrapper {
+  max-width: 450px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px;
+
+  span {
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 0.4em 0.8em;
+    border-radius: 4px;
+  }
+}
+
+.result-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+
+  span {
+    text-transform: uppercase;
+    background-color: #aeaeae22;
+    border-bottom: 2px solid #aeaeae;
+    font-size: 2rem;
+    line-height: 2.4;
+    width: 80px;
+    aspect-ratio: 1/1;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4em;
+
+  button {
+    background-color: #fcba29;
+    border: 2px solid var(--clr-bg);
+    text-transform: uppercase;
+    padding: 0;
+    width: 60px;
+    font-weight: 800;
+    aspect-ratio: 1/1;
+  }
+}
