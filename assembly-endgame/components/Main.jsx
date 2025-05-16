@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 import { languages } from "../../src/data";
 import { getFarewellText, getRandomWordfromAPI } from "../../src/utils";
@@ -72,7 +71,7 @@ export default function Main() {
   const ChipSet = function () {
     return languages.map((item, idx) => (
       <span
-        key={nanoid()}
+        key={idx}
         className={idx < wrongCount ? "lost" : ""}
         style={{ color: item.color, backgroundColor: item.backgroundColor }}
       >
