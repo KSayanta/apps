@@ -15,6 +15,7 @@ export default function Main() {
 
   // Static
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const nums = ["one", "two", "three", "four", "five", "six", "seven", "eight"];
 
   // Derived
   const wrongCount = guessedArr.filter(
@@ -23,19 +24,16 @@ export default function Main() {
 
   const isGameWon =
     didInit && currWord.split("").every(letter => guessedArr.includes(letter));
-
   const guessLeft = languages.length - 1;
   const isGameLost = wrongCount >= guessLeft;
   const isGameOver = isGameWon || isGameLost;
   const lastLetter = guessedArr[guessedArr.length - 1];
-
   const isLastGuessWrong =
     lastLetter && !currWord.includes(guessedArr[guessedArr.length - 1]);
 
   // Side Effect
   useEffect(() => {
     if (!didInit) {
-      didInit = true;
       fetchWord();
     }
   }, []);
@@ -64,6 +62,7 @@ export default function Main() {
   }
 
   function fetchWord() {
+    didInit = true;
     getRandomWordfromAPI().then(data => {
       setCurrWord(data.word);
     });
@@ -141,10 +140,16 @@ export default function Main() {
 
   return (
     <main className="main wrapper wrapper--flex">
-      <p className="instructions">
-        Guess the word in under eight attempts to keep the programming world
-        safe from Assembly!
-      </p>
+      {wrongCount < 1 ? (
+        <p className="instructions">
+          Guess the word in <strong>eight </strong>
+          attempts to keep the programming world safe from Assembly!
+        </p>
+      ) : (
+        <p className="instructions">
+          {isGameOver ? null : `Remaining count: ${nums.reverse()[wrongCount]}`}
+        </p>
+      )}
 
       <section aria-live="polite" role="status" className="feedback">
         <Feedback />

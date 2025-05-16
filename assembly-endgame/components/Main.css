@@ -8,6 +8,8 @@
 .instructions {
   font-size: 1.4rem;
   line-height: 1.6;
+  text-transform: capitalize;
+  min-height: 2lh;
 }
 
 .feedback {
