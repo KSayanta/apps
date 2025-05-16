@@ -15,6 +15,7 @@ export default defineConfig({
         "chef-claude": resolve(__dirname, "chef-claude/index.html"),
         "meme-generator": resolve(__dirname, "meme-generator/index.html"),
         tenzies: resolve(__dirname, "tenzies/index.html"),
+        "assembly-endgame": resolve(__dirname, "assembly-endgame/index.html"),
       },
     },
   },
