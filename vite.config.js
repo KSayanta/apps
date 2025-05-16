@@ -16,6 +16,7 @@ export default defineConfig({
         "meme-generator": resolve(__dirname, "meme-generator/index.html"),
         tenzies: resolve(__dirname, "tenzies/index.html"),
         "assembly-endgame": resolve(__dirname, "assembly-endgame/index.html"),
+        mmdb: resolve(__dirname, "mmdb/index.html"),
       },
     },
   },
