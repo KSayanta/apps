@@ -19,6 +19,10 @@ export default function Main() {
         <li>
           <a href="../../apps/assembly-endgame/">Assembly Endgame</a>
         </li>
+
+        <li>
+          <a href="../../apps/mmdb/">MMDb</a>
+        </li>
       </ul>
     </main>
   );
