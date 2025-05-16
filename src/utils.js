@@ -1,4 +1,3 @@
-import { words } from "./words";
 const url = import.meta.env.VITE_BACKEND_URL;
 
 export async function getDatafromAPI(ingredients) {
@@ -36,6 +35,18 @@ export async function getMemefromAPI() {
   }
 }
 
+export async function getRandomWordfromAPI() {
+  const endpoint = "/rand_word";
+
+  try {
+    const word = await fetch(url + endpoint).then(res => res.json());
+
+    return word;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
 export function pingHost() {
   try {
     fetch(url);
@@ -43,54 +54,6 @@ export function pingHost() {
     console.error(error.message);
   }
 }
-
-export const languages = [
-  {
-    name: "HTML",
-    backgroundColor: "#E2680F",
-    color: "#F9F4DA",
-  },
-  {
-    name: "CSS",
-    backgroundColor: "#328AF1",
-    color: "#F9F4DA",
-  },
-  {
-    name: "JavaScript",
-    backgroundColor: "#F4EB13",
-    color: "#1E1E1E",
-  },
-  {
-    name: "React",
-    backgroundColor: "#2ED3E9",
-    color: "#1E1E1E",
-  },
-  {
-    name: "TypeScript",
-    backgroundColor: "#298EC6",
-    color: "#F9F4DA",
-  },
-  {
-    name: "Node.js",
-    backgroundColor: "#599137",
-    color: "#F9F4DA",
-  },
-  {
-    name: "Python",
-    backgroundColor: "#FFD742",
-    color: "#1E1E1E",
-  },
-  {
-    name: "Ruby",
-    backgroundColor: "#D02B2B",
-    color: "#F9F4DA",
-  },
-  {
-    name: "Assembly",
-    backgroundColor: "#2D519F",
-    color: "#F9F4DA",
-  },
-];
 
 export function getFarewellText(language) {
   const options = [
@@ -110,9 +73,4 @@ export function getFarewellText(language) {
 
   const randomIndex = Math.floor(Math.random() * options.length);
   return options[randomIndex];
-}
-
-export function getRandomWord() {
-  const randomIndex = Math.floor(Math.random() * words.length);
-  return words[randomIndex];
 }

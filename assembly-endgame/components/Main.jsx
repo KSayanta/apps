@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
-import { getFarewellText, getRandomWord, languages } from "../../src/utils";
+import { languages } from "../../src/data";
+import { getFarewellText, getRandomWordfromAPI } from "../../src/utils";
 import "./Main.css";
+
+let didInit = false;
 
 export default function Main() {
   // State
-  const [currWord, setCurrWord] = useState(() => getRandomWord());
+  const [currWord, setCurrWord] = useState("");
   const [guessedArr, setGuessedArr] = useState([]);
   const [farewellText, setFarewellText] = useState("");
 
@@ -18,9 +21,8 @@ export default function Main() {
     guess => !currWord.includes(guess)
   ).length;
 
-  const isGameWon = currWord
-    .split("")
-    .every(letter => guessedArr.includes(letter));
+  const isGameWon =
+    didInit && currWord.split("").every(letter => guessedArr.includes(letter));
 
   const guessLeft = languages.length - 1;
   const isGameLost = wrongCount >= guessLeft;
@@ -31,6 +33,13 @@ export default function Main() {
     lastLetter && !currWord.includes(guessedArr[guessedArr.length - 1]);
 
   // Side Effect
+  useEffect(() => {
+    if (!didInit) {
+      didInit = true;
+      fetchWord();
+    }
+  }, []);
+
   useEffect(() => {
     if (wrongCount > 0) {
       const language = languages[wrongCount - 1].name;
@@ -51,7 +60,13 @@ export default function Main() {
   function handleReset() {
     setFarewellText("");
     setGuessedArr([]);
-    setCurrWord(getRandomWord());
+    fetchWord();
+  }
+
+  function fetchWord() {
+    getRandomWordfromAPI().then(data => {
+      setCurrWord(data.word);
+    });
   }
 
   // Functional Component

@@ -14,6 +14,7 @@
   align-self: stretch;
 
   h2 {
+    min-height: 80px;
     padding: 0.8em;
     border-radius: 4px;
     font-size: 1.8rem;
@@ -41,7 +42,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1em;
+  gap: 2em;
 }
 
 .chipset-wrapper {
@@ -121,14 +122,14 @@
     &[data-status="true"] {
       background-color: limegreen;
       &:hover {
-        box-shadow: 0 0 10px limegreen;
+        --box-shadow--clr: limegreen;
       }
     }
 
     &[data-status="false"] {
       background-color: tomato;
       &:hover {
-        box-shadow: 0 0 10px tomato;
+        --box-shadow--clr: tomato;
       }
     }
 
@@ -147,7 +148,7 @@
 .anim-slide-down {
   animation: slide-down 300ms ease-in-out;
   animation-direction: reverse;
-  animation-fill-mode: both;
+  animation-fill-mode: forwards;
   animation-delay: 1000ms;
 }
 

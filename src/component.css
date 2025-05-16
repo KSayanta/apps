@@ -35,7 +35,7 @@
   transition: 0.2s all;
 
   &:hover {
-    box-shadow: 0 0 10px var(--highlight-color);
+    box-shadow: 0 0 10px var(--box-shadow--clr, var(--highlight-color));
   }
 
   &:active {
