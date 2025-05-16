@@ -2,11 +2,16 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const svgrConf = {
+  svgrOptions: { exportType: "named", ref: true, svgo: false, titleProp: true },
+  include: "**/*.svg",
+};
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr(svgrConf)],
   base: "/apps/",
   build: {
     rollupOptions: {
