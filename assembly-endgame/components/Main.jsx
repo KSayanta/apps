@@ -14,7 +14,20 @@ export default function Main() {
 
   // Static
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const nums = ["one", "two", "three", "four", "five", "six", "seven", "eight"];
+  const nums = [
+    "",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+  ];
 
   // Derived
   const wrongCount = guessedArr.filter(
@@ -141,12 +154,14 @@ export default function Main() {
     <main className="main wrapper wrapper--flex">
       {wrongCount < 1 ? (
         <p className="instructions">
-          Guess the word in <strong>eight </strong>
+          Guess the word in <strong>{nums[guessLeft]} </strong>
           attempts to keep the programming world safe from Assembly!
         </p>
       ) : (
         <p className="instructions">
-          {isGameOver ? null : `Remaining count: ${nums.reverse()[wrongCount]}`}
+          {isGameOver
+            ? null
+            : `Remaining count: ${nums[guessLeft - wrongCount]}`}
         </p>
       )}
 
