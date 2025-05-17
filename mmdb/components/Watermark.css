@@ -1,0 +1,21 @@
+.watermark {
+  color: var(--clr-txt);
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  opacity: 0.2;
+  user-select: none;
+  pointer-events: none;
+
+  position: absolute;
+  left: 50%;
+  top: 400px;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4em;
+}

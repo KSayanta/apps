@@ -1,0 +1,35 @@
+.status {
+  color: var(--clr-txt);
+  position: absolute;
+  left: 50%;
+  top: 400px;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+
+  .msg {
+    max-inline-size: 40ch;
+    font-size: 1.125rem;
+    font-weight: 800;
+    line-height: 1.6;
+    text-align: center;
+    opacity: 0.6;
+    user-select: none;
+  }
+
+  .btn {
+    padding: 0.2em 0.4em;
+    pointer-events: all;
+    color: currentColor;
+    background-color: transparent;
+    font-size: 0.875rem;
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

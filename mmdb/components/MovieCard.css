@@ -1,0 +1,72 @@
+.card--movie {
+  padding-block: 2em;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px 24px;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid hsl(from var(--clr-txt) h s l / 0.4);
+  }
+
+  .poster {
+    grid-row: 1/4;
+    place-self: center;
+    border-radius: 4px;
+  }
+
+  .wrapper--details,
+  .wrapper--heading,
+  .description {
+    grid-column-start: 2;
+  }
+
+  .wrapper--heading {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .heading {
+      margin-right: 4px;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .rating {
+      font-size: 0.75rem;
+    }
+  }
+
+  .wrapper--details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.75rem;
+
+    .btn {
+      color: var(--clr-txt);
+      font-size: inherit;
+      font-weight: 500;
+      margin-left: 10px;
+      padding: 2px 0;
+      background-color: transparent;
+
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  .description {
+    color: hsl(from var(--clr-txt) h s l / 0.8);
+    max-block-size: 3lh;
+    max-inline-size: 50ch;
+    font-size: 0.875rem;
+    line-height: 1.4;
+
+    overflow: clip;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
