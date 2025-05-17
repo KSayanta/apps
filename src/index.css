@@ -87,8 +87,8 @@ svg {
 }
 
 /* Utility class */
-.hide {
-  display: none;
+.hidden {
+  display: none !important;
 }
 
 .conceal {
