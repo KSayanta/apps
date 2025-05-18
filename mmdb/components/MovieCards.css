@@ -1,0 +1,6 @@
+.main__content {
+  padding-block: 2em;
+  min-block-size: 600px;
+  inline-size: 80vw;
+  min-inline-size: fit-content;
+}

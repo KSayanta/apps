@@ -21,6 +21,7 @@
   }
 
   .wrapper--heading {
+    place-self: end start;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -41,6 +42,11 @@
     align-items: center;
     gap: 20px;
     font-size: 0.75rem;
+
+    .type,
+    .genre {
+      text-transform: capitalize;
+    }
 
     .btn {
       color: var(--clr-txt);

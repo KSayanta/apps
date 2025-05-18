@@ -14,10 +14,3 @@
   inline-size: 16px;
   block-size: 16px;
 }
-
-.main__content {
-  padding-block: 2em;
-  min-block-size: 600px;
-  inline-size: 80vw;
-  min-inline-size: fit-content;
-}
