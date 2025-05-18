@@ -3,7 +3,7 @@ import "./Status.css";
 
 const Status = ({ className, message, showBtn }) => (
   <div className={`status ${className}`}>
-    <p className="msg">{message}</p>
+    <p className="msg">{msg[message]}</p>
 
     {showBtn && (
       <a href="#" className="btn">
