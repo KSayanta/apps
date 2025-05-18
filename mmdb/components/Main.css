@@ -5,12 +5,3 @@
 .main {
   position: relative;
 }
-
-.icon {
-  display: inline-block;
-}
-
-.icon.icon-sm {
-  inline-size: 16px;
-  block-size: 16px;
-}

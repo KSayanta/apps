@@ -6,7 +6,7 @@ const Status = ({ className, message, showBtn }) => (
     <p className="msg">{msg[message]}</p>
 
     {showBtn && (
-      <a href="#" className="btn">
+      <a href="../" className="btn">
         <Plus className="icon icon-sm" role="img" />
         Let's add some movies!
       </a>
