@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getDatafromOmdb, getDatafromOmdbById } from "../../src/utils";
 
 import Cover from "./Cover";
@@ -11,12 +11,14 @@ import "./Main.css";
 
 export default function Main() {
   // Refs
-  // const searchInput = useRef(null);
 
   // State
   const [searchInput, setSearchInput] = useState("");
   const [searchRes, setSearchRes] = useState({});
-  const [searchResultArr, setSearchResultArr] = useState([]);
+  const [moviesArr, setMoviesArr] = useState([]);
+  const [watchListArr, setWatchListArr] = useState(() => {
+    return JSON.parse(localStorage.getItem("watchlist") || "[]");
+  });
 
   // Derived
   const isSearched = Object.keys(searchRes).length > 0;
@@ -33,27 +35,27 @@ export default function Main() {
       const showsPromises = res.Search.map(
         async search => await getDatafromOmdbById(search.imdbID)
       );
-      setSearchResultArr(await Promise.all(showsPromises));
+      setMoviesArr(await Promise.all(showsPromises));
     }
   }
 
-  function handleChange(e) {
+  function updateSearchInput(e) {
     const { value } = e.currentTarget;
     setSearchInput(value);
   }
 
   return (
     <main className="main">
-      <Cover />
+      <Cover page="search" />
 
       <Search
         action={submitSearch}
-        onChange={handleChange}
+        onChange={updateSearchInput}
         value={searchInput}
       />
 
       {!isSearched && <Watermark />}
-      {searchRes && <MovieCards cards={searchResultArr} />}
+      {searchRes && <MovieCards cards={moviesArr} />}
       {isSearchError && <Status message="failure" showBtn="" />}
     </main>
   );
