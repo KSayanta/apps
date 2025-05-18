@@ -44,6 +44,19 @@ export default function Main() {
     setSearchInput(value);
   }
 
+  function addToWatchlist(id) {
+    const newItem = moviesArr.filter(movie => movie.imdbID === id);
+    setWatchListArr(prevList => [...prevList, ...newItem]);
+  }
+
+  function removeFromWatchlist(id) {
+    setWatchListArr(prevList => {
+      const movieIdx = prevList.findIndex(movie => movie.imdbID === id);
+      if (movieIdx < 0) return prevList;
+      return prevList.toSpliced(movieIdx, 1);
+    });
+  }
+
   return (
     <main className="main">
       <Cover page="search" />
@@ -54,8 +67,16 @@ export default function Main() {
         value={searchInput}
       />
 
+      {searchRes && (
+        <MovieCards
+          watchlistArr={watchListArr}
+          cards={moviesArr}
+          addToList={addToWatchlist}
+          removeFromList={removeFromWatchlist}
+        />
+      )}
+
       {!isSearched && <Watermark />}
-      {searchRes && <MovieCards cards={moviesArr} />}
       {isSearchError && <Status message="failure" showBtn="" />}
     </main>
   );

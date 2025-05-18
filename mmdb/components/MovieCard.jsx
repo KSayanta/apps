@@ -3,7 +3,10 @@ import { ReactComponent as MinusIcon } from "../../src/icons/Minus.svg";
 import { ReactComponent as PlusIcon } from "../../src/icons/Plus.svg";
 import "./MovieCard.css";
 
-const MovieCard = ({ card }) => {
+const MovieCard = ({ card, id, addToList, removeFromList, watchlistArr }) => {
+  const isInWatchlist =
+    watchlistArr.filter(movie => movie.imdbID === id).length > 0;
+
   return (
     <article className="card--movie">
       <img
@@ -22,10 +25,18 @@ const MovieCard = ({ card }) => {
         <span className="time">{card.Year}</span>
         <span className="type">{card.Type}</span>
         <span className="genre">{card.Genre}</span>
-        <button className="btn">
-          <PlusIcon className="icon icon-sm" role="img" />
-          Watchlist
-        </button>
+
+        {isInWatchlist ? (
+          <button className="btn" onClick={() => removeFromList(id)}>
+            <MinusIcon className="icon icon-sm" role="img" />
+            Remove
+          </button>
+        ) : (
+          <button className="btn" onClick={() => addToList(id)}>
+            <PlusIcon className="icon icon-sm" role="img" />
+            Watchlist
+          </button>
+        )}
       </div>
 
       <p className="description">{card.Plot}</p>
