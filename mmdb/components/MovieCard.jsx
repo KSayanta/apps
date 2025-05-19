@@ -5,6 +5,7 @@ import "./MovieCard.css";
 
 const MovieCard = ({ card, id, addToList, removeFromList, watchlistArr }) => {
   const isInWatchlist =
+    !watchlistArr ||
     watchlistArr.filter(movie => movie.imdbID === id).length > 0;
 
   return (
