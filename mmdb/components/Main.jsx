@@ -57,6 +57,11 @@ export default function Main() {
     });
   }
 
+  // Side effects
+  useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(watchListArr));
+  }, [watchListArr]);
+
   return (
     <main className="main">
       <Cover page="search" />
