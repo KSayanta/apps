@@ -19,7 +19,7 @@ const Search = ({ action, onChange, value, reset }) => {
             name="mainSearch"
             type="search"
             aria-label="Search for a title or a imdb id."
-            placeholder="Search for a title"
+            placeholder="Search for a title or a imdb id"
             value={value}
             onChange={onChange}
           />

@@ -28,7 +28,10 @@ export default function Main() {
       <Cover page="watchlist" />
       {isWatchlistEmpty && <Status message="empty" showBtn={true} />}
       {!isWatchlistEmpty && (
-        <MovieCards cards={watchlist} removeFromList={removeFromWatchlist} />
+        <MovieCards
+          moviesArr={watchlist}
+          removeFromList={removeFromWatchlist}
+        />
       )}
     </main>
   );

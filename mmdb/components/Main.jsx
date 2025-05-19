@@ -26,6 +26,16 @@ export default function Main() {
   // Handler functions
   async function submitSearch(formData) {
     const querry = formData.get("mainSearch");
+    const regex = /^tt\d+$/;
+    const isImdbID = regex.test(querry);
+
+    if (isImdbID) {
+      const res = await getDatafromOmdbById(querry);
+      setSearchRes(res);
+      res.Response === "True" && setMoviesArr([res]);
+      return;
+    }
+
     const res = await getDatafromOmdb(querry);
     setSearchRes(res);
 
@@ -79,7 +89,7 @@ export default function Main() {
       {searchRes && (
         <MovieCards
           watchlistArr={watchListArr}
-          cards={moviesArr}
+          moviesArr={moviesArr}
           addToList={addToWatchlist}
           removeFromList={removeFromWatchlist}
         />
