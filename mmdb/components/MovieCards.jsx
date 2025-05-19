@@ -1,12 +1,11 @@
 import MovieCard from "./MovieCard";
 import "./MovieCards.css";
 
-const MovieCards = ({ cards, addToList, removeFromList, watchlistArr }) => {
-  const cardsElm = cards.map((card, idx) => (
+const MovieCards = ({ moviesArr, addToList, removeFromList, watchlistArr }) => {
+  const cardsElm = moviesArr.map((movie, idx) => (
     <MovieCard
       key={idx}
-      id={card.imdbID}
-      card={card}
+      movie={movie}
       addToList={addToList}
       removeFromList={removeFromList}
       watchlistArr={watchlistArr}
