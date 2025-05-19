@@ -11,11 +11,26 @@
     display: flex;
     border-radius: 8px;
 
+    .wrapper__content {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+
+      &:focus-within {
+        outline: 1px solid var(--highlight-color);
+      }
+    }
+
     .icon {
       opacity: 0.6;
+    }
+
+    .icon--search {
       margin-inline: 1em;
-      inline-size: 20px;
-      aspect-ratio: 1/1;
+      width: 24px;
+      height: 24px;
     }
 
     input,
@@ -28,20 +43,31 @@
       font-size: 1.4rem;
       padding: 0.6em;
       background-color: transparent;
+      outline: none;
       border: none;
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
-
-      &:focus {
-        outline: 1px solid var(--highlight-color);
-      }
     }
 
-    button {
+    .btn[type="submit"] {
       background-color: hsl(from var(--clr-txt) h s l / 0.2);
       font-size: 1rem;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+    }
+
+    .btn[type="reset"] {
+      background-color: transparent;
+      margin-inline: 6px;
+      padding: 0;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        box-shadow: none;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
     }
   }
 }

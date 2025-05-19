@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { getDatafromOmdb, getDatafromOmdbById } from "../../src/utils";
 
 import Cover from "./Cover";
@@ -10,8 +10,6 @@ import Watermark from "./Watermark";
 import "./Main.css";
 
 export default function Main() {
-  // Refs
-
   // State
   const [searchInput, setSearchInput] = useState("");
   const [searchRes, setSearchRes] = useState({});
@@ -44,6 +42,11 @@ export default function Main() {
     setSearchInput(value);
   }
 
+  function resetSearchInput(searchInputRef) {
+    searchInputRef.current.focus();
+    setSearchInput("");
+  }
+
   function addToWatchlist(id) {
     const newItem = moviesArr.filter(movie => movie.imdbID === id);
     setWatchListArr(prevList => [...prevList, ...newItem]);
@@ -67,6 +70,7 @@ export default function Main() {
       <Cover page="search" />
 
       <Search
+        reset={resetSearchInput}
         action={submitSearch}
         onChange={updateSearchInput}
         value={searchInput}

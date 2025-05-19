@@ -1,33 +1,46 @@
+import { useRef } from "react";
 import { ReactComponent as SearchIcon } from "../../src/icons/Search.svg";
+import { ReactComponent as CloseIcon } from "../../src/icons/Cross.svg";
 import "./Search.css";
 
-const Search = ({ action, onChange, value }) => (
-  <search className="main__search">
-    <form action={action} className="wrapper form">
-      <SearchIcon className="icon" role="img" />
+const Search = ({ action, onChange, value, reset }) => {
+  const inputRef = useRef(null);
+  const isSearched = value != "";
 
-      <label htmlFor="mainSearch" className="sr-only">
-        Search for a title or a imdb id.
-      </label>
+  return (
+    <search className="main__search">
+      <form action={action} className="wrapper form">
+        <div className="wrapper__content">
+          <SearchIcon className="icon icon--search" role="img" />
 
-      <input
-        id="mainSearch"
-        name="mainSearch"
-        type="search"
-        placeholder="Search for a title"
-        value={value}
-        onChange={onChange}
-      />
+          <input
+            ref={inputRef}
+            id="mainSearch"
+            name="mainSearch"
+            type="search"
+            aria-label="Search for a title or a imdb id."
+            placeholder="Search for a title"
+            value={value}
+            onChange={onChange}
+          />
 
-      <label htmlFor="btnSearch" className="sr-only">
-        search.
-      </label>
+          {isSearched && (
+            <button
+              onClick={() => reset(inputRef)}
+              type="reset"
+              className="btn"
+            >
+              <CloseIcon className="icon icon-sm" role="img" />
+            </button>
+          )}
+        </div>
 
-      <button id="btnSearch" type="submit" className="btn">
-        Search
-      </button>
-    </form>
-  </search>
-);
+        <button id="btnSearch" type="submit" className="btn">
+          Search
+        </button>
+      </form>
+    </search>
+  );
+};
 
 export default Search;
