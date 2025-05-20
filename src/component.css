@@ -21,6 +21,7 @@
     font-weight: 900;
     padding: 0.4em 1em;
     border-radius: 8px;
+    outline: 1px solid hsl(from var(--clr-txt) h s l / 0.2);
   }
 
   .heading {

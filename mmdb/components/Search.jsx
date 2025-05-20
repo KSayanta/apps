@@ -29,6 +29,7 @@ const Search = ({ action, onChange, value, reset }) => {
               onClick={() => reset(inputRef)}
               type="reset"
               className="btn"
+              aria-label="Clear search."
             >
               <CloseIcon className="icon icon-sm" role="img" />
             </button>

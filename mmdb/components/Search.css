@@ -1,7 +1,5 @@
 .main__search {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-self: center;
   inline-size: 80vw;
   min-inline-size: fit-content;
 
@@ -10,6 +8,7 @@
     color: var(--clr-txt);
     display: flex;
     border-radius: 8px;
+    outline: 1px solid hsl(from var(--clr-txt) h s l / 0.2);
 
     .wrapper__content {
       display: flex;
@@ -28,7 +27,7 @@
     }
 
     .icon--search {
-      margin-inline: 1em;
+      margin-inline: 1em 0.4em;
       width: 24px;
       height: 24px;
     }
