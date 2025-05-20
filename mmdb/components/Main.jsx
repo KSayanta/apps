@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDatafromOmdb, getDatafromOmdbById } from "../../src/utils";
+import { getDatafromOmdb } from "../../src/utils";
 
 import Cover from "./Cover";
 import Search from "./Search";
@@ -26,23 +26,13 @@ export default function Main() {
   // Handler functions
   async function submitSearch(formData) {
     const querry = formData.get("mainSearch");
-    const regex = /^tt\d+$/;
-    const isImdbID = regex.test(querry);
-
-    if (isImdbID) {
-      const res = await getDatafromOmdbById(querry);
-      setSearchRes(res);
-      res.Response === "True" && setMoviesArr([res]);
-      return;
-    }
-
     const res = await getDatafromOmdb(querry);
     setSearchRes(res);
-
     if (res.Response === "True") {
       const showsPromises = res.Search.map(
-        async search => await getDatafromOmdbById(search.imdbID)
+        async search => await getDatafromOmdb(search.imdbID)
       );
+
       setMoviesArr(await Promise.all(showsPromises));
     }
   }
@@ -77,14 +67,14 @@ export default function Main() {
 
   return (
     <main className="main">
-      <Cover page="search" />
-
-      <Search
-        reset={resetSearchInput}
-        action={submitSearch}
-        onChange={updateSearchInput}
-        value={searchInput}
-      />
+      <Cover page="search">
+        <Search
+          reset={resetSearchInput}
+          action={submitSearch}
+          onChange={updateSearchInput}
+          value={searchInput}
+        />
+      </Cover>
 
       {searchRes && (
         <MovieCards

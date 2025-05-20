@@ -1,5 +1,4 @@
 const url = import.meta.env.VITE_BACKEND_URL;
-const omdbKey = import.meta.env.VITE_OMDB_KEY;
 
 export async function getDatafromAPI(ingredients) {
   const endpoint = "/recipe";
@@ -77,13 +76,17 @@ export function getFarewellText(language) {
 }
 
 export async function getDatafromOmdb(querry) {
-  const string = `http://www.omdbapi.com/?apikey=${omdbKey}&s=${querry}`;
-  const json = await fetch(string).then(res => res.json());
-  return json;
-}
+  const endpoint = "/movie";
+  const regex = /^tt\d+$/;
+  const isImdbID = regex.test(querry);
+  let string = url + endpoint;
 
-export async function getDatafromOmdbById(querry) {
-  const string = `http://www.omdbapi.com/?apikey=${omdbKey}&i=${querry}`;
+  if (isImdbID) {
+    string = string.concat(`?i=${querry}`);
+  } else {
+    string = string.concat(`?s=${querry}`);
+  }
+
   const json = await fetch(string).then(res => res.json());
   return json;
 }

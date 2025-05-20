@@ -22,6 +22,7 @@ export default defineConfig({
         tenzies: resolve(__dirname, "tenzies/index.html"),
         "assembly-endgame": resolve(__dirname, "assembly-endgame/index.html"),
         mmdb: resolve(__dirname, "mmdb/index.html"),
+        watchlist: resolve(__dirname, "mmdb/watchlist/index.html"),
       },
     },
   },

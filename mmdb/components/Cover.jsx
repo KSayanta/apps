@@ -1,11 +1,14 @@
 import "./Cover.css";
 
-const Cover = ({ page }) => (
+const Cover = ({ page, children }) => (
   <section className="main__cover">
-    <h2 className="heading">{pages[page].heading}</h2>
-    <a href={pages[page].link} className="btn btn-alt">
-      {pages[page].linkText}
-    </a>
+    <div className="cover--wrapper">
+      <h2 className="heading">{pages[page].heading}</h2>
+      <a href={pages[page].link} className="btn btn-alt">
+        {pages[page].linkText}
+      </a>
+    </div>
+    {children}
   </section>
 );
 
