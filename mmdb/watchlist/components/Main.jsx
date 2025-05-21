@@ -26,7 +26,12 @@ export default function Main() {
   return (
     <main>
       <Cover page="watchlist" />
-      {isWatchlistEmpty && <Status message="empty" showBtn={true} />}
+      {isWatchlistEmpty && (
+        <Status
+          message="Your watchlist is looking a little ... empty"
+          showBtn={true}
+        />
+      )}
       {!isWatchlistEmpty && (
         <MovieCards
           moviesArr={watchlist}

@@ -32,8 +32,9 @@ export default function Main() {
       const showsPromises = res.Search.map(
         async search => await getDatafromOmdb(search.imdbID)
       );
-
       setMoviesArr(await Promise.all(showsPromises));
+    } else {
+      setMoviesArr([]);
     }
   }
 
@@ -45,6 +46,7 @@ export default function Main() {
   function resetSearchInput(searchInputRef) {
     searchInputRef.current.focus();
     setSearchInput("");
+    setSearchRes({});
   }
 
   function addToWatchlist(id) {
@@ -76,7 +78,7 @@ export default function Main() {
         />
       </Cover>
 
-      {searchRes && (
+      {isSearched && (
         <MovieCards
           watchlistArr={watchListArr}
           moviesArr={moviesArr}
@@ -86,7 +88,7 @@ export default function Main() {
       )}
 
       {!isSearched && <Watermark />}
-      {isSearchError && <Status message="failure" showBtn="" />}
+      {isSearchError && <Status message={searchRes.Error} />}
     </main>
   );
 }

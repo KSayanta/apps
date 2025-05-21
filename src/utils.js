@@ -87,6 +87,15 @@ export async function getDatafromOmdb(querry) {
     string = string.concat(`?s=${querry}`);
   }
 
-  const json = await fetch(string).then(res => res.json());
+  const json = await fetch(string)
+    .then(res => res.json())
+    .catch(err => {
+      console.error(err.message);
+      return {
+        Response: "False",
+        Error: "Internal server error! Please try again after some time.",
+      };
+    });
+
   return json;
 }
