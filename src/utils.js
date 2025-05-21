@@ -1,3 +1,4 @@
+import { words } from "./data";
 const url = import.meta.env.VITE_BACKEND_URL;
 
 export async function getDatafromAPI(ingredients) {
@@ -40,10 +41,12 @@ export async function getRandomWordfromAPI() {
 
   try {
     const word = await fetch(url + endpoint).then(res => res.json());
-
     return word;
   } catch (error) {
     console.error(error.message);
+    const idx = Math.floor(Math.random() * words.length);
+    const word = words[idx];
+    return { id: idx, word: word };
   }
 }
 
