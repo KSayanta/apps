@@ -1,6 +1,6 @@
 import "./Main.css";
 
-export default function Main() {
+export default function Main({ children }) {
   return (
     <main className="wrapper">
       <ul className="projects">
@@ -24,6 +24,7 @@ export default function Main() {
           <a href="../../apps/mmdb/">MMDb</a>
         </li>
       </ul>
+      {children}
     </main>
   );
 }
