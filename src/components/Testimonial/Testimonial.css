@@ -1,0 +1,207 @@
+:root {
+  --testimonial-gutter: 16px;
+  @media (width > 800px) {
+    --testimonial-gutter: 70px;
+  }
+}
+
+.testimonial-container {
+  container: testimonial-container / inline-size;
+}
+
+/*
+ * Testimonial
+ */
+.testimonial {
+  background: #2545b8;
+  padding-block: 0 2em;
+  margin-block: 4em;
+  max-inline-size: 375px;
+
+  @container testimonial-container (inline-size > 800px) {
+    max-inline-size: unset;
+    padding-block: 0.5em;
+  }
+
+  .testimonial-author {
+    font-size: 1rem;
+    font-weight: 800;
+    display: block;
+  }
+
+  .testimonial-designation,
+  .testimonial-source {
+    font-size: 0.75rem;
+    line-height: 1.8;
+  }
+
+  .testimonial-designation {
+    font-weight: 600;
+  }
+
+  .testimonial-source {
+    font-weight: 400;
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    font-style: normal;
+    border-left: 1px solid hsl(from currentColor h s l / 0.4);
+
+    &:has(:any-link):hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+      opacity: 0.8;
+    }
+  }
+}
+
+/*
+ * Testimonial with image
+ */
+.testimonial.full {
+  display: grid;
+  gap: 1.5em 0;
+  grid-template-columns:
+    var(--testimonial-gutter)
+    repeat(10, 1fr)
+    var(--testimonial-gutter);
+
+  .testimonial-image,
+  .testimonial-body,
+  .testimonial-footer {
+    grid-column: 2 / -2;
+  }
+
+  @container testimonial-container (inline-size > 800px) {
+    .testimonial-image {
+      grid-column: 2 / span 3;
+      grid-row: span 2;
+    }
+
+    .testimonial-body,
+    .testimonial-footer {
+      grid-column: 6 / -2;
+    }
+
+    &.right {
+      --image-transform: right;
+      .testimonial-image {
+        grid-column: span 3 / -2;
+        grid-row: span 2;
+      }
+
+      .testimonial-body,
+      .testimonial-footer {
+        grid-column: 2 / -6;
+        text-align: end;
+      }
+
+      .testimonial-body {
+        grid-row: 1;
+      }
+    }
+  }
+
+  .testimonial-image {
+    --image-height: 300px;
+    place-self: start stretch;
+    max-height: var(--image-height);
+    margin-top: calc(-1 * var(--image-height) / 2);
+    object-fit: cover;
+    border-radius: 12px;
+
+    @container testimonial-container (inline-size > 800px) {
+      margin-top: unset;
+      max-height: unset;
+      place-self: center;
+      transform: scale(1.25);
+      transform-origin: var(--image-transform, left);
+    }
+  }
+
+  .testimonial-body {
+    place-self: end;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+
+    &::before {
+      content: "\201C";
+      display: block;
+      font-size: 5rem;
+      margin-bottom: -0.5em;
+      opacity: 0.2;
+    }
+  }
+}
+
+/*
+ * Testimonial without image
+ */
+.testimonial.logo {
+  position: relative;
+  padding-inline: var(--testimonial-gutter);
+  padding-block: 4em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/dot-pattern.png");
+    background-position: bottom left;
+    mask-composite: intersect;
+    mask-image:
+      linear-gradient(0deg, #000a 0%, #0000 40%, #0000 100%),
+      linear-gradient(90deg, #000a 0%, #0000 60%, #0000 100%);
+
+    @container testimonial-container (inline-size > 800px) {
+      mask-image:
+        linear-gradient(0deg, #000a 0%, #0000 80%, #0000 100%),
+        linear-gradient(90deg, #000a 0%, #0000 30%, #0000 100%);
+    }
+  }
+
+  .testimonial-logo {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .testimonial-body,
+  .testimonial-footer {
+    text-align: left;
+    @container testimonial-container (inline-size > 800px) {
+      text-align: center;
+    }
+  }
+
+  .testimonial-body {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.6;
+
+    &::before {
+      content: "\201C";
+      margin-right: 4px;
+    }
+
+    &::after {
+      content: "\201D";
+      margin-left: 4px;
+    }
+  }
+}
