@@ -1,0 +1,116 @@
+.tooltip {
+  --base: 2em;
+  --height: 1em;
+  --position: 50%;
+  --radius: 1.2em;
+  --tooltip-gutter: 40px;
+
+  background-color: var(--bg-tooltip);
+  color: var(--text-tooltip, #fff);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  max-width: fit-content;
+  margin: var(--height) auto;
+  padding: 1em;
+  border-radius: var(--radius) var(--radius)
+    min(var(--radius), 100% - var(--position) - var(--base) / 2)
+    min(var(--radius), var(--position) - var(--base) / 2) / var(--radius);
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 8px 0;
+  grid-template-columns: var(--tooltip-gutter) 1fr var(--tooltip-gutter);
+
+  .tooltip-icon {
+    place-self: start;
+    font-size: 0;
+    opacity: 0.8;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+    }
+  }
+
+  .tooltip-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .tooltip-body {
+    order: 1;
+    grid-column: 2 / -2;
+    max-width: 40ch;
+    text-wrap: balance;
+  }
+
+  .tooltip-close {
+    place-self: start end;
+    background-color: transparent;
+    border: none;
+    color: currentColor;
+    font-size: 0;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0 0 calc(-1 * var(--height));
+    background: inherit;
+
+    clip-path: polygon(
+      50% 50%,
+      min(100%, var(--position) + var(--base) / 2) calc(100% - var(--height)),
+      var(--position) 100%,
+      max(0%, var(--position) - var(--base) / 2) calc(100% - var(--height))
+    );
+  }
+
+  &.dark {
+    --bg-tooltip: #262626;
+
+    &.inverted {
+      --text-tooltip: #262626;
+      --bg-tooltip: #fff;
+    }
+  }
+
+  &.blue {
+    --bg-tooltip: #1e40af;
+
+    &.inverted {
+      --text-tooltip: #1e40af;
+      --bg-tooltip: #e0e7ff;
+    }
+  }
+
+  &.purple {
+    --bg-tooltip: #a9229b;
+
+    &.inverted {
+      --text-tooltip: #a9229b;
+      --bg-tooltip: #fff3fc;
+    }
+  }
+
+  &.green {
+    --bg-tooltip: #47aa5d;
+
+    &.inverted {
+      --text-tooltip: #47aa5d;
+      --bg-tooltip: #e7fff3;
+    }
+  }
+}
