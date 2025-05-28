@@ -13,14 +13,15 @@ export default function Banner({
   children,
   ...rest
 }) {
-  const cName = "banner-icon";
-
   return (
     <div className={"banner " + status + " " + className} {...rest}>
-      {status === "success" && <FaCheckCircle className={cName} />}
-      {status === "warning" && <FaExclamationTriangle className={cName} />}
-      {status === "update" && <FaExclamationCircle className={cName} />}
-      {status === "error" && <FaTimesCircle className={cName} />}
+      <span className="banner-icon">
+        {status === "success" && <FaCheckCircle />}
+        {status === "warning" && <FaExclamationTriangle />}
+        {status === "update" && <FaExclamationCircle />}
+        {status === "error" && <FaTimesCircle />}
+      </span>
+
       <p className="banner-title">{title}</p>
       {children ? <p className="banner-body">{children}</p> : null}
     </div>

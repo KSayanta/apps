@@ -1,77 +1,84 @@
-.banner {
+.toast {
+  position: absolute;
+  inset: 0;
+  margin: auto auto 30px;
+
+  width: 380px;
+  height: fit-content;
+  border-radius: 8px;
+
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: 0 0.75em;
   padding: 1em;
-  border-radius: 6px;
 
-  .banner-icon {
+  .toast-icon {
     grid-row: span 2;
     svg {
-      width: 1em;
-      height: 1em;
+      width: 24px;
+      height: 24px;
       display: inline-block;
     }
   }
 
-  .banner-title {
+  .toast-title {
     font-size: 0.875em;
     font-weight: 800;
   }
 
-  .banner-body {
+  .toast-body {
     margin-top: 0.5em;
     font-size: 0.75em;
   }
 
   &.success {
     background-color: #e0f3ef;
-    .banner-icon {
+    .toast-icon {
       color: #34d399;
     }
-    .banner-title {
+    .toast-title {
       color: #065f46;
     }
-    .banner-body {
+    .toast-body {
       color: #047857;
     }
   }
 
   &.warning {
     background-color: #f1f1e5;
-    .banner-icon {
+    .toast-icon {
       color: #fbbf24;
     }
-    .banner-title {
+    .toast-title {
       color: #92400e;
     }
-    .banner-body {
+    .toast-body {
       color: #b45309;
     }
   }
 
   &.update {
     background-color: #e2ecf7;
-    .banner-icon {
+    .toast-icon {
       color: #60a5fa;
     }
-    .banner-title {
+    .toast-title {
       color: #1e40af;
     }
-    .banner-body {
+    .toast-body {
       color: #1c51b9;
     }
   }
 
   &.error {
     background-color: #efe7ea;
-    .banner-icon {
+    .toast-icon {
       color: #f87171;
     }
-    .banner-title {
+    .toast-title {
       color: #92400e;
     }
-    .banner-body {
+    .toast-body {
       color: #b45309;
     }
   }
