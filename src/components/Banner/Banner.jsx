@@ -6,9 +6,13 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 
-export default function Banner(status, children, ...rest) {
+/**
+ *  Banner component
+ */
+
+export default function Banner({ status, children, ...props }) {
   return (
-    <div className={"banner " + status} {...rest}>
+    <div className={"banner " + status} {...props}>
       <span className="banner-icon">
         {status === "success" && <FaCheckCircle />}
         {status === "warning" && <FaExclamationTriangle />}
