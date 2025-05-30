@@ -1,12 +1,13 @@
 import "./Badge.css";
 
+/**
+ * Badge component for display
+ */
 export default function Badge({
   children,
-  href,
-  rounded,
-  className = "",
+  rounded = false,
   variant = 0,
-  ...rest
+  ...props
 }) {
   const color = [
     "gray",
@@ -18,18 +19,10 @@ export default function Badge({
     "purple",
     "pink",
   ];
-
-  let cName = className + " ";
-  cName += "badge " + color[variant];
-  cName += rounded ? " rounded" : "";
-
-  return !href ? (
-    <button {...rest} className={cName}>
+  const mode = rounded ? "rounded" : "";
+  return (
+    <button {...props} className={["badge", color[variant], mode].join(" ")}>
       {children}
     </button>
-  ) : (
-    <a {...rest} className={cName} href={href}>
-      {children}
-    </a>
   );
 }
