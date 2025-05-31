@@ -6,6 +6,7 @@ export default function App() {
     <>
       <Header />
       <Main />
+      <div className="wrapper wrapper--flex"></div>
     </>
   );
 }
