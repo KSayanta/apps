@@ -63,7 +63,7 @@
 /*
  * Testimonial with image
  */
-.testimonial.full {
+.testimonial:has(.testimonial-image) {
   display: grid;
   gap: 1.5em 0;
   grid-template-columns:
@@ -103,21 +103,23 @@
 
       .testimonial-body {
         grid-row: 1;
+        place-self: end;
       }
     }
   }
 
   .testimonial-image {
-    --image-height: 300px;
+    --image-height: 200px;
     place-self: start stretch;
     max-height: var(--image-height);
     margin-top: calc(-1 * var(--image-height) / 2);
-    object-fit: cover;
+    overflow: clip;
     border-radius: 12px;
 
     @container testimonial-container (inline-size > 800px) {
       margin-top: unset;
-      max-height: unset;
+      max-width: 280px;
+      max-height: 340px;
       place-self: center;
       transform: scale(1.25);
       transform-origin: var(--image-transform, left);
@@ -125,13 +127,14 @@
   }
 
   .testimonial-body {
-    place-self: end;
+    place-self: end start;
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 1.2;
 
     &::before {
       content: "\201C";
+      pointer-events: none;
       display: block;
       font-size: 5rem;
       margin-bottom: -0.5em;
@@ -143,7 +146,7 @@
 /*
  * Testimonial without image
  */
-.testimonial.logo {
+.testimonial:has(.testimonial-logo) {
   position: relative;
   padding-inline: var(--testimonial-gutter);
   padding-block: 4em;
@@ -156,6 +159,8 @@
     content: "";
     position: absolute;
     inset: 0;
+    pointer-events: none;
+
     background-image: url("/dot-pattern.png");
     background-position: bottom left;
     mask-composite: intersect;
