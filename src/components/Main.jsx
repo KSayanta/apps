@@ -1,29 +1,19 @@
+import List from "./List";
 import "./Main.css";
 
 export default function Main({ children }) {
   return (
     <main className="wrapper">
-      <ul className="projects">
-        <li>
-          <a href="../../apps/chef-claude/">Chef Claude</a>
-        </li>
+      <List>
+        <List.Item href="../../apps/chef-claude/">Chef Claude</List.Item>
+        <List.Item href="../../apps/meme-generator/">Meme Generator</List.Item>
+        <List.Item href="../../apps/tenzies/">Tenzies</List.Item>
+        <List.Item href="../../apps/assembly-endgame/">
+          Assembly Endgame
+        </List.Item>
+        <List.Item href="../../apps/mmdb/">MMDb</List.Item>
+      </List>
 
-        <li>
-          <a href="../../apps/meme-generator/">Meme Generator</a>
-        </li>
-
-        <li>
-          <a href="../../apps/tenzies/">Tenzies</a>
-        </li>
-
-        <li>
-          <a href="../../apps/assembly-endgame/">Assembly Endgame</a>
-        </li>
-
-        <li>
-          <a href="../../apps/mmdb/">MMDb</a>
-        </li>
-      </ul>
       {children}
     </main>
   );
